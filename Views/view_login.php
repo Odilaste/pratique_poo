@@ -1,6 +1,6 @@
 <?php 
     session_start();
-   // require_once 'Controlers/controler_login.php';
+   require_once 'Controlers/controler_login.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,10 +14,12 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow" style="width: 400px;">
             <h3 class="text-center">Connexion</h3>
-            <?php if (Controler_login::$error): ?>
-                <div class="alert alert-danger"><?= $error ?></div>
-            <?php endif; ?>
-            <form method="post" action="Controlers/controler_login.php">
+            <?php if ($_SESSION['error']): ?>
+                <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
+            <?php endif;
+               unset($_SESSION['error']);
+            ?>
+            <form method="post" action="index.php?action=login">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" class="form-control" required>

@@ -1,7 +1,7 @@
 <?php 
-require_once 'Models/abs_class_users.php';
-require_once 'Models/class_patient.php';
-require_once 'Models/class_doctor.php';
+require 'Models/abs_class_users.php';
+require 'Models/class_patient.php';
+require 'Models/class_doctor.php';
     class factoryUser extends users{
 
         public function __construct($email,$password){

@@ -1,6 +1,6 @@
 <?php 
-    require_once 'Models/class_con_mysql.php';
-    require_once 'class_factory_user.php';
+    require 'Models/class_con_mysql.php';
+    require 'class_factory_user.php';
 class Controler_login{
     public static $error = "";
    public static function login(){
@@ -11,8 +11,9 @@ class Controler_login{
             $login_user= new factoryUser( $email,$password );
             $user=$login_user->createUser();
             if(! $user){
-                $error = "Email ou mot de passe incorrect.";
+                $_SESSION['error'] = "Email ou mot de passe incorrect.";
                 header("Location: Views/view_login.php");
+                exit;
             }
             else{
                 header("Location: Views/view_dashboard.php");
